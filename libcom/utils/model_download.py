@@ -24,15 +24,18 @@ def download_entire_folder(folder_path):
         assert len(os.listdir(folder_path)) > 1, f'{folder_path} is an empty folder'
         return folder_path
     else:
-        folder_path = os.path.abspath(folder_path) 
-        folder_name = os.path.basename(folder_path)
-        file_name   = folder_name + '.zip'
-        save_dir    = os.path.dirname(folder_path)
-        download_file_from_network(file_name, save_dir)
-        zip_file    = zipfile.ZipFile(os.path.join(save_dir, file_name))
-        zip_file.extractall(save_dir)
-        os.remove(os.path.join(save_dir, file_name))
-        print('Folder has been stored to ', folder_path)
+        try:
+            folder_path = os.path.abspath(folder_path) 
+            folder_name = os.path.basename(folder_path)
+            file_name   = folder_name + '.zip'
+            save_dir    = os.path.dirname(folder_path)
+            download_file_from_network(file_name, save_dir)
+            zip_file    = zipfile.ZipFile(os.path.join(save_dir, file_name))
+            zip_file.extractall(save_dir)
+            os.remove(os.path.join(save_dir, file_name))
+            print('Folder has been stored to ', folder_path)
+        except:
+            print('Error occured...')
         return folder_path
     
 def download_file_from_network(file_name, save_dir):
