@@ -44,8 +44,7 @@ if __name__ == '__main__':
 
     print(len(computed))
     print(computed[0])
-    for index, result in computed:
-        cv2.imwrite('test-result-%d.jpg' % index, result)
+    cv2.imwrite('test-result.jpg', computed[0])
 
 
     print('Done.')
