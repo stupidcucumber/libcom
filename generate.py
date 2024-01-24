@@ -29,16 +29,22 @@ if __name__ == '__main__':
     print('Foreground: ', input_fg)
 
     net = ControlComModel(device=0)
+
     computed = net(background_image=input_bg,
                    foreground_image=input_fg,
                    bbox=bboxes[0],
                    task=['blending', 'harmonization'])
-    
+    for bbox in bboxes[1:]:
+        computed = net(background_image=computed[0],
+                       foreground_image=input_fg,
+                       bbox=bbox,
+                       task=['blending', 'harmonization'])
+
+
     print(len(computed))
     print(computed[0])
-    cv2.imwrite('test.jpg', computed[0])
-    result = draw_bbox_on_image(computed[0], bboxes[0])
-    cv2.imshow('Result', result)
+    for index, result in computed:
+        cv2.imwrite('test-result-%d.jpg' % index, result)
 
 
     print('Done.')
