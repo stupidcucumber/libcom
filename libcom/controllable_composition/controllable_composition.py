@@ -73,7 +73,7 @@ class ControlComModel:
         self.model_type = model_type
         self.option = kwargs
         
-        weight_path = os.path.join(cur_dir, 'pretrained_models', 'models--BCMIZB--Libcom_pretrained_models', 'blobs', '43738665192d7b725d964317ff43dab848986fb3464e069f937c42bd9d4fbec0')
+        weight_path = os.path.join(cur_dir, 'pretrained_models', 'ControlCom.pth')
         download_pretrained_model(weight_path)
         
         self.device = check_gpu_device(device)
