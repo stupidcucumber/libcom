@@ -35,7 +35,8 @@ if __name__ == '__main__':
                    bbox=bboxes[0],
                    task=['blending', 'harmonization'])
     for bbox in bboxes[1:]:
-        computed = net(background_image=computed[0],
+        cv2.imwrite('temp.jpg', computed[0])
+        computed = net(background_image='temp.jpg',
                        foreground_image=input_fg,
                        bbox=bbox,
                        task=['blending', 'harmonization'])
