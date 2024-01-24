@@ -44,7 +44,8 @@ if __name__ == '__main__':
 
     print(len(computed))
     print(computed[0])
-    cv2.imwrite('test-result.jpg', computed[0])
+    cv2.imwrite('test-result-0.jpg', computed[0])
+    cv2.imwrite('test-result-1.jpg', computed[1])
 
 
     print('Done.')
