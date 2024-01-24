@@ -35,6 +35,8 @@ if __name__ == '__main__':
                    task=['blending', 'harmonization'])
     
     print(len(computed))
+    print(computed[0])
+    cv2.imwrite('test.jpg', computed[0])
     result = draw_bbox_on_image(computed[0], bboxes[0])
     cv2.imshow('Result', result)
 
